@@ -17,12 +17,17 @@ const useStyles = makeStyles({
   },
 });
 
-const Mission = ({mission}) => {
+const Mission = ({mission, openHandler, fetchDetailedMissionAPI}) => {
     const classes = useStyles();
+
+    const clickHandler = () => {
+        openHandler();
+        fetchDetailedMissionAPI(mission.flightNumber)
+    }
 
     return (
         <Card className={classes.root}>
-            <CardActionArea>
+            <CardActionArea onClick={clickHandler}>
             <CardMedia
                 className={classes.media}
                 image={mission.img}

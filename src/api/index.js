@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const url = "https://api.spacexdata.com/v3/launches?limit=20";
+const url = "https://api.spacexdata.com/v3/launches";
 
 export const fetchMissions = async() => {
     try {
-        const {data} = await axios.get(url);
+        const {data} = await axios.get(`${url}?limit=20`);
         const modData = data.map(d => {
             let img = "https://live.staticflickr.com/7608/16661753958_3d70ab216d_b.jpg";
             if(d.links.flickr_images.length) 
@@ -18,6 +18,21 @@ export const fetchMissions = async() => {
             }    
         });
         return modData;
+    } catch (err) {
+        
+    }
+}
+
+
+export const fetchMissionDetails = async flightNumber => {
+    try {
+        const {data: {
+                launch_site:{site_name},
+                launch_success,
+                launch_date_utc
+            }
+        } = await axios.get(`${url}/${flightNumber}`);
+        return {siteName: site_name, success: launch_success, dateUTC: launch_date_utc};
     } catch (err) {
         
     }
