@@ -43,11 +43,8 @@ const Mission = ({mission, openHandler, fetchDetailedMissionAPI}) => {
             </CardContent>
             </CardActionArea>
             <CardActions>
-            <Button size="small" color="primary">
-                Share
-            </Button>
-            <Button size="small" color="primary">
-                Learn More
+            <Button size="small" color="primary" onClick={clickHandler}>
+                More
             </Button>
             </CardActions>
         </Card>

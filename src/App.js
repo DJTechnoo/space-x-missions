@@ -1,5 +1,6 @@
 import React from 'react';
 import Missions from './components/missions/Missions';
+import Nav from './components/Nav';
 
 
 function App() {
@@ -7,8 +8,7 @@ function App() {
 
   return (
     <div>
-      <h1>Space-X Missions App</h1>
-      <Missions/>
+      <Nav/>
     </div>
   );
 }

@@ -4,7 +4,7 @@ const url = "https://api.spacexdata.com/v3/launches";
 
 export const fetchMissions = async() => {
     try {
-        const {data} = await axios.get(`${url}?limit=20`);
+        const {data} = await axios.get(`${url}`);
         const modData = data.map(d => {
             let img = "https://live.staticflickr.com/7608/16661753958_3d70ab216d_b.jpg";
             if(d.links.flickr_images.length) 
@@ -17,7 +17,7 @@ export const fetchMissions = async() => {
                 img : img
             }    
         });
-        return modData;
+        return modData.slice(Math.max(modData.length - 20, 0)).reverse();
     } catch (err) {
         
     }

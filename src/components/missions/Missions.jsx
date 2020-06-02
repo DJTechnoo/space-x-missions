@@ -65,13 +65,13 @@ const Missions = () => {
                     ) 
                     : (
                         <p id="simple-modal-description">
-                            Launch failed
+                            Launch not confirmed or failed
                         </p>
                     )
                 }
                 
             </div>)
-            : <h1></h1>
+            : <></>
     );
 
     const openHandler = () => {
@@ -87,7 +87,7 @@ const Missions = () => {
             <Grid container spacing={3}>
                 <Grid item xs={3}></Grid>
                 <Grid item xs={6}>
-                    <h1>Missions here</h1>
+                    <h1>Mission Launches</h1>
                 </Grid>
                 <Grid item xs={3}></Grid>
 
