@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Mission from './Mission';
+import {Fade} from 'react-reveal';
 import {Grid, Modal} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {fetchMissions, fetchMissionDetails} from '../../api';
@@ -87,26 +88,27 @@ const Missions = () => {
             <Grid container spacing={3}>
                 <Grid item xs={3}></Grid>
                 <Grid item xs={6}>
-                    <h1>Mission Launches</h1>
+                    <Fade left>
+                        <h1>Mission Launches</h1>
+                    </Fade> 
                 </Grid>
                 <Grid item xs={3}></Grid>
-
-                {missions.map(m =>(
-                    <Grid key={m.flightNumber} item xs={6} md={4}>
-                        <Mission 
-                            mission={m} 
-                            openHandler={openHandler} 
-                            fetchDetailedMissionAPI={fetchDetailedMissionAPI}
-                        />
-                    </Grid>
-                ))}
+                    {missions.map(m =>(
+                        <Grid key={m.flightNumber} item xs={6} md={4}>
+                            <Mission 
+                                mission={m} 
+                                openHandler={openHandler} 
+                                fetchDetailedMissionAPI={fetchDetailedMissionAPI}
+                                />
+                        </Grid>
+                    ))}
             </Grid>
             <Modal
                 open={open}
                 onClose={closeHandler}
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
-            >
+                >
                 {body}
             </Modal>
         </div>

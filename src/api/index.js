@@ -14,10 +14,13 @@ export const fetchMissions = async() => {
                 missionName: d.mission_name,
                 rocketName : d.rocket.rocket_name,
                 launchYear : d.launch_year,
+                date : d.launch_date_unix,
                 img : img
             }    
         });
-        return modData.slice(Math.max(modData.length - 20, 0)).reverse();
+        return modData.slice(Math.max(modData.length - 20, 0))
+            .sort((a,b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0)); 
+;
     } catch (err) {
         
     }
